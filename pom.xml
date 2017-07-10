@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.spring.boot</groupId>
-    <artifactId>spring-boot-build</artifactId>
+    <artifactId>spring-bootiful</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -22,6 +22,8 @@
 
     <!-- 多模块项目管理 -->
     <modules>
+        <module>spring-boot-autoconfigures</module>
+        <module>spring-boot-starters</module>
     </modules>
 
     <!-- 源代码管理 -->
