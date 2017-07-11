@@ -24,6 +24,7 @@
     <modules>
         <module>spring-boot-autoconfigures</module>
         <module>spring-boot-starters</module>
+        <module>spring-boot-examples</module>
     </modules>
 
     <!-- 源代码管理 -->
@@ -50,7 +51,7 @@
 
     <properties>
         <fastjson.version>1.2.34</fastjson.version>
-        <testng.version>6.11</testng.version>
+        <testng.version>6.9.10</testng.version>
 
         <!-- spring-boot-dependencies -->
         <assertj.version>3.5.2</assertj.version>
@@ -164,6 +165,24 @@
 
         <!-- 插件列表 -->
         <plugins>
+            <!-- 源码打包 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 发布JAR包 -->
+            <plugin>
+                <artifactId>maven-deploy-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>

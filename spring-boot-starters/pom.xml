@@ -16,6 +16,11 @@
     <description>Spring Boot Starters</description>
     <url>http://projects.spring.io/spring-boot/</url>
 
+    <!-- 多模块项目管理 -->
+    <modules>
+        <module>spring-boot-starter-http</module>
+    </modules>
+
     <properties>
     </properties>
 

@@ -9,26 +9,31 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-boot-autoconfigures</artifactId>
+    <artifactId>spring-boot-examples</artifactId>
     <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
-    <description>Spring Boot AutoConfigure</description>
-    <url>http://projects.spring.io/spring-boot/</url>
+    <description>Spring Boot Samples</description>
 
     <!-- 多模块项目管理 -->
     <modules>
-        <module>spring-boot-autoconfigure-http</module>
+        <module>spring-boot-example-http</module>
     </modules>
 
     <properties>
     </properties>
 
     <dependencies>
-        <!-- Compile -->
+        <!-- ================ Test ================ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

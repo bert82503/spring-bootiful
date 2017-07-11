@@ -1,0 +1,74 @@
+
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http",
+      "type": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.threadPoolName",
+      "type": "java.lang.String",
+      "description": "使用的线程池名称",
+      "defaultValue": "AsyncHttpClient"
+    },
+
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.connectTimeout",
+      "description": "等待连接到远程主机的最大时间(ms)",
+      "defaultValue": 1000
+    },
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.requestTimeout",
+      "description": "等待请求响应完成的最大时间(ms)",
+      "defaultValue": 3000
+    },
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.readTimeout",
+      "description": "客户端连接维持空闲的最大时间(ms)",
+      "defaultValue": 60000
+    },
+
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.maxConnections",
+      "description": "处理请求的最大连接数",
+      "defaultValue": 500
+    },
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.maxConnectionsPerHost",
+      "description": "每个主机的最大连接数",
+      "defaultValue": 200
+    },
+
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.keepAlive",
+      "type": "java.lang.Boolean",
+      "description": "连接是否保持存活",
+      "defaultValue": true
+    },
+
+
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.handshakeTimeout",
+      "description": "SSL连接握手的最大时间",
+      "defaultValue": 1000
+    },
+    {
+      "sourceType": "com.spring.boot.autoconfigure.http.AsyncHttpClientProperties",
+      "name": "com.spring.http.config.sslSessionTimeout",
+      "description": "SSL会话超时(s)，0意味着使用默认值",
+      "defaultValue": 0
+    }
+  ]
+}
