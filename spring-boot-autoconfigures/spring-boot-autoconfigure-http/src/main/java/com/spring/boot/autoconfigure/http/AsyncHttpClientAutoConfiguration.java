@@ -32,10 +32,10 @@ import org.springframework.context.annotation.Configuration;
 @SuppressWarnings("unused")
 public class AsyncHttpClientAutoConfiguration {
 
-    private final AsyncHttpClientProperties httpClientProperties;
+    private final AsyncHttpClientProperties properties;
 
     public AsyncHttpClientAutoConfiguration(AsyncHttpClientProperties properties) {
-        httpClientProperties = properties;
+        this.properties = properties;
     }
 
     @Bean(name = "asyncHttpClient", destroyMethod = "close")
@@ -43,8 +43,9 @@ public class AsyncHttpClientAutoConfiguration {
             AsyncHttpClient.class
     })
     public AsyncHttpClient asyncHttpClient() {
-        Builder configBuilder = httpClientProperties.getConfig()
-                .setIoThreadsCount(Runtime.getRuntime().availableProcessors() -1) // Netty IO线程数量，默认为CPU核数的两倍
+        Builder configBuilder = properties.getConfig()
+                .setIoThreadsCount( // Netty IO线程数量，默认为CPU核数的两倍
+                        Runtime.getRuntime().availableProcessors() -1)
                 ;
 
         return Dsl.asyncHttpClient(configBuilder);
