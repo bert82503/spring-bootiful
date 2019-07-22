@@ -1,0 +1,20 @@
+
+
+# Run Listeners
+org.springframework.boot.SpringApplicationRunListener=\
+com.spring.boot.context.event.SpringApplicationLoggingRunListener
+
+# Application Context Initializers
+#org.springframework.context.ApplicationContextInitializer=\
+
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+com.spring.boot.context.event.ApplicationContextEventApplicationListener,\
+com.spring.boot.context.event.SpringApplicationEventApplicationListener
+
+# Environment Post Processors
+#org.springframework.boot.env.EnvironmentPostProcessor=\
+
+# Auto Configure
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+

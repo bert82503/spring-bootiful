@@ -21,9 +21,6 @@
         <module>spring-boot-starter-http</module>
     </modules>
 
-    <properties>
-    </properties>
-
     <dependencies>
         <!-- Compile -->
         <dependency>

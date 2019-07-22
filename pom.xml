@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.19.RELEASE</version>
     </parent>
 
     <groupId>com.spring.boot</groupId>
@@ -50,7 +50,7 @@
     <!-- Maven -> Show Effective POM：查看已定义的属性和依赖管理列表 -->
 
     <properties>
-        <fastjson.version>1.2.34</fastjson.version>
+<!--        <fastjson.version>1.2.58</fastjson.version>-->
         <testng.version>6.9.10</testng.version>
 
         <!-- spring-boot-dependencies -->
@@ -62,30 +62,14 @@
     <!-- 依赖管理(版本一致性) -->
     <dependencyManagement>
         <dependencies>
-            <!-- ================ JSON ================ -->
-            <!-- Fastjson Wiki - https://github.com/Alibaba/fastjson/wiki/首页 -->
-            <!-- 常见问题 - https://github.com/alibaba/fastjson/wiki/常见问题 -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.code.findbugs</groupId>
-                <artifactId>jsr305</artifactId>
-                <version>3.0.1</version>
-                <optional>true</optional><!-- needed only for annotations -->
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>1.16.12</version>
-            </dependency>
-
+            <!-- ================ 三方库 ================ -->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba</groupId>-->
+<!--                <artifactId>fastjson</artifactId>-->
+<!--                <version>${fastjson.version}</version>-->
+<!--            </dependency>-->
 
             <!-- ================ Test ================ -->
-            <!-- Test Overview · spring.side4 Wiki - https://github.com/springside/springside4/wiki/Test-Overview -->
-            <!-- TestNG Documentation - http://testng.org/doc/documentation-main.html -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
@@ -98,7 +82,6 @@
     <!-- 所有项目的公共依赖 -->
     <dependencies>
         <!-- ================ Unit Test ================ -->
-        <!-- JUnit - http://junit.org -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -109,17 +92,12 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
         </dependency>
-        <!-- AssertJ · spring.side4 Wiki - https://github.com/springside/springside4/wiki/AssertJ -->
-        <!-- AssertJ Core features highlight - http://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html -->
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Mock · spring.side4 Wiki - https://github.com/springside/springside4/wiki/Mock -->
-        <!-- Mockito - http://site.mockito.org -->
-        <!-- Mockito API - http://javadoc.io/page/org.mockito/mockito-core/latest/org/mockito/Mockito.html -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -130,12 +108,12 @@
 
     <!-- 项目构建 -->
     <build>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-
         <!-- 插件管理 -->
         <pluginManagement>
             <plugins>
+                <!-- 编译器 -->
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
                         <source>${maven.compiler.source}</source>
@@ -143,19 +121,15 @@
                         <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
-                <!-- Lombok Usage - http://awhitford.github.io/lombok.maven/lombok-maven-plugin/usage.html -->
+                <!-- 源码打包 -->
                 <plugin>
-                    <groupId>org.projectlombok</groupId>
-                    <artifactId>lombok-maven-plugin</artifactId>
-                    <version>1.16.10.0</version>
-                    <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                    </configuration>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
                     <executions>
                         <execution>
-                            <phase>generate-sources</phase>
+                            <id>attach-sources</id>
                             <goals>
-                                <goal>delombok</goal>
+                                <goal>jar</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -165,29 +139,26 @@
 
         <!-- 插件列表 -->
         <plugins>
+            <!-- 编译器 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
             <!-- 源码打包 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
-            <!-- 发布JAR包 -->
+            <!-- 单元测试 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--            </plugin>-->
+            <!-- 集成测试 -->
             <plugin>
-                <artifactId>maven-deploy-plugin</artifactId>
-            </plugin>
-
-            <plugin>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
-
 </project>

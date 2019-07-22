@@ -1,0 +1,83 @@
+
+
+# ===================================================================
+# COMMON SPRING BOOT PROPERTIES
+#
+# This sample file is provided as a guideline. Do NOT copy it in its
+# entirety to your own application.               ^^^
+# ===================================================================
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+
+# BANNER
+#自定义Logo
+
+# LOGGING
+logging:
+  # Log levels severity mapping. For instance `logging.level.org.springframework=DEBUG`
+  level: info
+
+# AOP
+
+# SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
+
+
+# ----------------------------------------
+# WEB PROPERTIES
+# ----------------------------------------
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server:
+  # Server HTTP port.
+#  port: 8080
+  tomcat:
+    # Maximum queue length for incoming connection requests when all possible request processing threads are in use.
+    accept-count: 1
+    # Maximum number of connections that the server will accept and process at any given time.
+    max-connections: 200
+    # Maximum amount of worker threads.
+#    max-threads: 200
+    # Minimum amount of worker threads.
+    min-spare-threads: 20
+    # Character encoding to use to decode the URI.
+#    uri-encoding: UTF-8
+    accesslog:
+      # Enable access log.
+      enabled: true
+
+# SPRING MVC (WebMvcProperties)
+spring:
+  mvc:
+    servlet:
+      # Load on startup priority of the Spring Web Services servlet.
+      load-on-startup: 1
+  # PROFILES
+#  profiles:
+#    active: dev
+
+
+# REDIS (RedisProperties)
+
+# ACTIVEMQ (ActiveMQProperties)
+
+# SPRING BATCH (BatchProperties)
+
+# APACHE KAFKA (KafkaProperties)
+
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+
+# ENDPOINTS (AbstractEndpoint subclasses)
+
+# MANAGEMENT HTTP SERVER (ManagementServerProperties)
+management:
+  security:
+    # Accessing sensitive endpoints
+    # Enable security.
+    enabled: false
+

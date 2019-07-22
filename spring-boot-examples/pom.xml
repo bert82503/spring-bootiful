@@ -18,18 +18,11 @@
     <!-- 多模块项目管理 -->
     <modules>
         <module>spring-boot-example-http</module>
+        <module>spring-boot-example-base</module>
     </modules>
-
-    <properties>
-    </properties>
 
     <dependencies>
         <!-- ================ Test ================ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
