@@ -18,7 +18,7 @@ public class HomeController {
     return "spring-boot-example-base";
   }
 
-  @GetMapping(path = "/check_health")
+  @GetMapping(path = "/checkHealth")
   public String checkHealth() {
     return "ok";
   }
