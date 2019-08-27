@@ -8,15 +8,23 @@ import org.springframework.core.Ordered;
 
 /**
  * Spring应用生命周期事件的应用监视器。
+ * <p>
+ * 包含{@code ServletRequestHandledEvent}等事件，范围过大。
  *
+ * @author dannong.lihg
  * @since 2019-07-21
  */
-public class ApplicationEventApplicationListener
-    implements ApplicationListener<ApplicationEvent>, Ordered {
+public class ApplicationEventApplicationListener implements ApplicationListener<ApplicationEvent>, Ordered {
+
   private static final Logger logger = LoggerFactory.getLogger(ApplicationEventApplicationListener.class);
 
   public ApplicationEventApplicationListener() {
     logger.info("create {}", this);
+  }
+
+  @Override
+  public int getOrder() {
+    return Ordered.HIGHEST_PRECEDENCE;
   }
 
   @Override
@@ -26,8 +34,4 @@ public class ApplicationEventApplicationListener
     logger.info("handle {}", event);
   }
 
-  @Override
-  public int getOrder() {
-    return Ordered.HIGHEST_PRECEDENCE;
-  }
 }

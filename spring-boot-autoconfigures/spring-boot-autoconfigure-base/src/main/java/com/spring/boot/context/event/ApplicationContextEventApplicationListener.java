@@ -1,5 +1,7 @@
 package com.spring.boot.context.event;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -8,15 +10,14 @@ import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.Ordered;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 /**
  * Spring应用上下文生命周期事件的应用监视器。
  *
+ * @author dannong.lihg
  * @since 2019-07-21
  */
-public class ApplicationContextEventApplicationListener
-    implements ApplicationListener<ApplicationContextEvent>, Ordered {
+public class ApplicationContextEventApplicationListener implements ApplicationListener<ApplicationContextEvent>, Ordered {
+
   private static final Logger logger = LoggerFactory.getLogger(ApplicationContextEventApplicationListener.class);
 
   /**
@@ -28,6 +29,11 @@ public class ApplicationContextEventApplicationListener
 
   public ApplicationContextEventApplicationListener() {
     logger.info("create {}", this);
+  }
+
+  @Override
+  public int getOrder() {
+    return Ordered.HIGHEST_PRECEDENCE;
   }
 
   @Override
@@ -46,8 +52,4 @@ public class ApplicationContextEventApplicationListener
     }
   }
 
-  @Override
-  public int getOrder() {
-    return Ordered.HIGHEST_PRECEDENCE;
-  }
 }

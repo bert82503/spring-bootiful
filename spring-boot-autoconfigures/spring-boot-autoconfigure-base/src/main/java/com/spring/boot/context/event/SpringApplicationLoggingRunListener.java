@@ -11,11 +11,12 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * Spring应用运行监视器日志记录器，记录Spring应用生命周期的各个阶段。
  *
+ * @author dannong.lihg
  * @since 2019-07-21
  * @see org.springframework.boot.context.event.EventPublishingRunListener
  */
-public class SpringApplicationLoggingRunListener
-    implements SpringApplicationRunListener, Ordered {
+public class SpringApplicationLoggingRunListener implements SpringApplicationRunListener, Ordered {
+
   private static final Logger logger = LoggerFactory.getLogger(SpringApplicationLoggingRunListener.class);
 
   private final SpringApplication application;
@@ -54,4 +55,5 @@ public class SpringApplicationLoggingRunListener
   public void finished(ConfigurableApplicationContext context, Throwable exception) {
     logger.info("finished spring application");
   }
+
 }

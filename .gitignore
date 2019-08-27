@@ -1,5 +1,8 @@
 # gitignore Documentation - http://git-scm.com/docs/gitignore
 
+# Documentation
+docs/
+
 # Log
 **/logs/
 
