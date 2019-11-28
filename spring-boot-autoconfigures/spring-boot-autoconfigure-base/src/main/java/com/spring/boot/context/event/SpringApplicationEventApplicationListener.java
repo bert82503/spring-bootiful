@@ -13,15 +13,16 @@ import org.springframework.core.Ordered;
 /**
  * Spring应用生命周期事件的应用监视器。
  *
- * @author dannong.lihg
  * @since 2019-07-21
  */
-public class SpringApplicationEventApplicationListener implements ApplicationListener<SpringApplicationEvent>, Ordered {
+public class SpringApplicationEventApplicationListener
+    implements ApplicationListener<SpringApplicationEvent>, Ordered {
 
-  private static final Logger logger = LoggerFactory.getLogger(SpringApplicationEventApplicationListener.class);
+  private static final Logger logger = LoggerFactory
+      .getLogger(SpringApplicationEventApplicationListener.class);
 
   /**
-   * 应用启动完成标识。
+   * 应用启动完成开关。
    * <p>
    * 注意：事件可能被重复触发，需保障操作幂等。
    */

@@ -11,12 +11,13 @@ import org.springframework.core.Ordered;
  * <p>
  * 包含{@code ServletRequestHandledEvent}等事件，范围过大。
  *
- * @author dannong.lihg
  * @since 2019-07-21
  */
-public class ApplicationEventApplicationListener implements ApplicationListener<ApplicationEvent>, Ordered {
+public class ApplicationEventApplicationListener
+    implements ApplicationListener<ApplicationEvent>, Ordered {
 
-  private static final Logger logger = LoggerFactory.getLogger(ApplicationEventApplicationListener.class);
+  private static final Logger logger = LoggerFactory
+      .getLogger(ApplicationEventApplicationListener.class);
 
   public ApplicationEventApplicationListener() {
     logger.info("create {}", this);

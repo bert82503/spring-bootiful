@@ -11,19 +11,50 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * Spring应用运行监视器日志记录器，记录Spring应用生命周期的各个阶段。
  *
- * @author dannong.lihg
- * @since 2019-07-21
  * @see org.springframework.boot.context.event.EventPublishingRunListener
+ * @since 2019-07-21
  */
-public class SpringApplicationLoggingRunListener implements SpringApplicationRunListener, Ordered {
+public class SpringApplicationLoggingRunListener
+    implements SpringApplicationRunListener, Ordered {
 
-  private static final Logger logger = LoggerFactory.getLogger(SpringApplicationLoggingRunListener.class);
+  private static final Logger logger = LoggerFactory
+      .getLogger(SpringApplicationLoggingRunListener.class);
 
   private final SpringApplication application;
 
-  public SpringApplicationLoggingRunListener(SpringApplication application, String[] args) {
+  private final String[] args;
+
+  public SpringApplicationLoggingRunListener(
+      SpringApplication application, String[] args) {
     logger.info("create {}", this);
     this.application = application;
+    this.args = args;
+
+    logger.info("main application class, path:{}, package name:{}",
+        getMainApplicationClassAbsolutePath(), getMainApplicationClassPackageName());
+  }
+
+  private String getMainApplicationClassAbsolutePath() {
+    Class<?> mainApplicationClass = application.getMainApplicationClass();
+
+    // ~/Documents/workspace/GitHub/spring-bootiful/spring-boot-examples/spring-boot-example-base/target/classes
+//    ApplicationHome home = new ApplicationHome(mainApplicationClass);
+//    return (home.getSource() != null) ? home.getSource().getAbsolutePath()
+//        : "";
+
+    // ~/Documents/workspace/GitHub/spring-bootiful/spring-boot-examples/spring-boot-example-base/target/classes/com/spring/boot/base
+    String path = mainApplicationClass.getResource(mainApplicationClass.getSimpleName() + ".class")
+        .getPath();
+    path = path.substring(0, path.lastIndexOf(System.getProperty("file.separator")));
+    return path;
+  }
+
+  private String getMainApplicationClassPackageName() {
+    Class<?> mainApplicationClass = application.getMainApplicationClass();
+    // com.spring.boot.base.BaseApplication
+    String className = mainApplicationClass.getName();
+    // com.spring.boot.base
+    return className.substring(0, className.lastIndexOf('.'));
   }
 
   @Override

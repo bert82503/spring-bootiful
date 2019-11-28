@@ -13,15 +13,16 @@ import org.springframework.core.Ordered;
 /**
  * Spring应用上下文生命周期事件的应用监视器。
  *
- * @author dannong.lihg
  * @since 2019-07-21
  */
-public class ApplicationContextEventApplicationListener implements ApplicationListener<ApplicationContextEvent>, Ordered {
+public class ApplicationContextEventApplicationListener
+    implements ApplicationListener<ApplicationContextEvent>, Ordered {
 
-  private static final Logger logger = LoggerFactory.getLogger(ApplicationContextEventApplicationListener.class);
+  private static final Logger logger = LoggerFactory
+      .getLogger(ApplicationContextEventApplicationListener.class);
 
   /**
-   * 应用上下文启动完成标识。
+   * 应用上下文启动完成开关。
    * <p>
    * 注意：当存在父子应用上下文时，事件可能被重复触发，需保障操作幂等。
    */

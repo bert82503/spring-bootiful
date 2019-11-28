@@ -1,20 +1,20 @@
 
 
-# Run Listeners
+# Run Listeners Spring应用运行监视器
 org.springframework.boot.SpringApplicationRunListener=\
 com.spring.boot.context.event.SpringApplicationLoggingRunListener
 
-# Application Context Initializers
+# Application Context Initializers 应用上下文初始化者
 #org.springframework.context.ApplicationContextInitializer=\
 
-# Application Listeners
+# Application Listeners 应用监视器
 org.springframework.context.ApplicationListener=\
 com.spring.boot.context.event.ApplicationContextEventApplicationListener,\
 com.spring.boot.context.event.SpringApplicationEventApplicationListener
 
-# Environment Post Processors
+# Environment Post Processors 应用运行环境后置处理器
 #org.springframework.boot.env.EnvironmentPostProcessor=\
 
-# Auto Configure
+# Auto Configure 开启自动配置
 #org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 
