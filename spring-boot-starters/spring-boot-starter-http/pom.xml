@@ -15,7 +15,7 @@
     <name>spring-boot-starter-http</name>
 
     <properties>
-        <async-http-client.version>2.0.33</async-http-client.version>
+        <async-http-client.version>2.0.35</async-http-client.version>
     </properties>
 
     <dependencies>
