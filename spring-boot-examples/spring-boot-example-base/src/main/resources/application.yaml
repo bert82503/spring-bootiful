@@ -2,64 +2,295 @@
 
 # ===================================================================
 # COMMON SPRING BOOT PROPERTIES
+# 常见的Spring Boot属性集
 #
 # This sample file is provided as a guideline. Do NOT copy it in its
 # entirety to your own application.               ^^^
+# 提供配置样本文件作为指导(缺省值配置)。请勿将其全部复制到您自己的应用程序中。
 # ===================================================================
 
 
 # ----------------------------------------
 # CORE PROPERTIES
+# 核心属性集
 # ----------------------------------------
 
-# BANNER
-#自定义Logo
+# BANNER - 系统品牌的横幅广告
+#banner:
+  # Banner file encoding. 横幅文件的编码
+#  charset: UTF-8
+  # Banner file location. 横幅文件的位置
+#  location: classpath:banner.txt
 
 # LOGGING
 logging:
-  # Log levels severity mapping. For instance `logging.level.org.springframework=DEBUG`
+  # Location of the logging configuration file. 日志记录配置文件的位置
+#  config:
+  # Log file name. 日志文件名
+#  file:
+  # Log levels severity mapping. 日志级别严重性映射
   level: info
+  # Location of the log file. 日志文件的位置
+#  path:
 
-# AOP
-
-# SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
+spring:
+  # AOP
+  aop:
+    # Add @EnableAspectJAutoProxy.
+#    auto: true
+    # Whether subclass-based (CGLIB) proxies are to be created (true) as opposed to standard Java interface-based proxies (false). Defaults to "true" when using Spring Transaction Management, otherwise "false".
+    # 代理目标类，基于子类的代理(CGLIB)，基于接口的代理(Java)
+    proxy-target-class: true
+    # IDENTITY (ContextIdApplicationContextInitializer)
+#  application:
+    # Application index. 应用程序的索引
+#      index:
+    # Application name. 应用程序的名称
+#      name:
+      # ADMIN (SpringApplicationAdminJmxAutoConfiguration)
+#      admin:
+        # Enable admin features for the application.
+        # 为应用程序启用管理员功能
+#        enabled: false
+        # JMX name of the application admin MBean.
+        # 应用程序管理员MBean的JMX名称
+#        jmx-name: org.springframework.boot:type=Admin,name=SpringApplication
+  # AUTO-CONFIGURATION
+#  autoconfigure:
+    # Auto-configuration classes to exclude. 排除的自动配置类列表
+#    exclude:
+  # SPRING CACHE (CacheProperties)
+#  cache:
+    # Comma-separated list of cache names to create if supported by the underlying cache manager.
+#    cache-names:
+    # Cache type, auto-detected according to the environment by default. 缓存类型，默认情况下根据环境自动检测
+#    type:
+  # SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
+#  config:
+    # Config file locations. 配置文件位置列表
+#    location:
+    # Config file name. 配置文件名
+#    name: application
+  # JMX
+#  jmx:
+    # JMX domain name. JMX的域名
+#    default-domain:
+    # Expose management beans to the JMX domain. 暴露管理beans到JMX域
+#    enabled: true
+  # MBeanServer bean name. 管理bean服务器的bean名称
+#    server: mbeanServer
+  # APPLICATION SETTINGS (SpringApplication)
+  main:
+    # Mode used to display the banner when the application runs.
+    # 应用程序运行时用于显示横幅的模式
+    banner-mode: log
+    # Sources (class name, package name or XML resource location) to include in the ApplicationContext.
+    # 包含在应用上下文中的bean资源对象集(类名，包名或XML资源位置)
+#    sources:
+  # FILE ENCODING (FileEncodingApplicationListener)
+  # Expected character encoding the application must use.
+  # 应用程序必须使用的预期的字符编码
+  mandatory-file-encoding: UTF-8
+  # PID FILE (ApplicationPidFileWriter)
+#  pid:
+    # Fail if ApplicationPidFileWriter is used but it cannot write the PID file.
+    # 如果使用ApplicationPidFileWriter但无法写入PID文件，则失败
+#    fail-on-write-error:
+    # Location of the PID file to write (if ApplicationPidFileWriter is used).
+    # 要写入的PID文件的位置(如果使用了ApplicationPidFileWriter)
+#    file:
+  # PROFILES
+#  profiles:
+    # Comma-separated list (or list if using YAML) of active profiles.
+    # 活动的配置文件集的逗号分隔列表
+#    active:
+    # Unconditionally activate the specified comma separated profiles (or list of profiles if using YAML).
+    # 无条件激活指定的逗号分隔的配置文件集(对所有环境都是相同配置值的必须配置)
+#    include:
+  http:
+    # HTTP message conversion
+#    converters:
+      # Preferred JSON mapper to use for HTTP message conversion.
+      # 用于HTTP消息转换的首选JSON映射器
+#      preferred-json-mapper: jackson
+    # HTTP encoding (HttpEncodingProperties)
+#    encoding:
+      # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly.
+      # HTTP请求和响应的字符集。如果未明确设置，则添加到"Content-Type"头信息中
+#      charset: UTF-8
+      # Enable http encoding support. 启用HTTP编码支持
+#      enabled: true
+    # MULTIPART (MultipartProperties) 文件上传
+    multipart:
+      # Enable support of multi-part uploads.
+      # 启用对文件多部分上传的支持
+      enabled: true
+      # Max file size. 最大文件大小
+#      max-file-size: 1MB
+      # Max request size. 最大请求大小
+#      max-request-size: 10MB
+      # Whether to resolve the multipart request lazily at the time of file or parameter access.
+      # 在文件或参数访问时是否延迟解析多部分请求
+      resolve-lazily: true
+  # JACKSON (JacksonProperties)
+  jackson:
+    # Date format string or a fully-qualified date format class name.
+    # 日期格式字符串或完全限定日期格式类名称
+    date-format: yyyy-MM-dd HH:mm:ss
+    # Controls the inclusion of properties during serialization.
+    # 控制序列化期间属性的包含
+    default-property-inclusion: always
+    # Joda date time format string. If not configured, "date-format" will be used as a fallback if it is configured with a format string.
+#    joda-date-time-format:
+    # One of the constants on Jackson's PropertyNamingStrategy. Can also be a fully-qualified class name of a PropertyNamingStrategy subclass.
+    # Jackson的属性名称策略接口的常量之一，也可以是其子类的完全限定类名称
+    property-naming-strategy: LOWER_CAMEL_CASE
+  # SPRING MVC (WebMvcProperties)
+  mvc:
+    async:
+      # Amount of time (in milliseconds) before asynchronous request handling times out.
+      # 异步请求处理超时之前的时间(毫秒)
+      request-timeout: 1000
+    # Date format to use.
+    # 要使用的日期格式
+    date-format: yyyy-MM-dd
+    servlet:
+      # Load on startup priority of the Spring Web Services servlet.
+      # 加载servlet的启动优先级
+      load-on-startup: 1
 
 
 # ----------------------------------------
 # WEB PROPERTIES
+# Web环境属性集
 # ----------------------------------------
 
 # EMBEDDED SERVER CONFIGURATION (ServerProperties)
 server:
-  # Server HTTP port.
+  compression:
+    # If response compression is enabled. 启用响应压缩
+    enabled: true
+    # Minimum response size that is required for compression to be performed.
+    # 执行压缩所需的最小响应大小(2KB)
+#    min-response-size: 2048
+  # Time in milliseconds that connectors will wait for another HTTP request before closing the connection. When not set, the connector's container-specific default will be used. Use a value of -1 to indicate no (i.e. infinite) timeout.
+  # 连接器在关闭连接之前将等待另一个HTTP请求的时间(毫秒)。未设置时，将使用连接器特定于容器的默认值。
+  connection-timeout: 600000
+  # Context path of the application. 应用程序的上下文路径
+#  context-path:
+  # Display name of the application. 应用程序的显示名称
+#  display-name: application
+#  error:
+    # Path of the error controller. 错误控制器的路径
+#    path: /error
+  # Server HTTP port. 服务器HTTP请求端口
 #  port: 8080
+  # Path of the main dispatcher servlet.
+  # 主调度程序的路径
+#  servlet-path: /
+  session:
+    cookie:
+      # Maximum age of the session cookie in seconds.
+      # 会话cookie的最长期限(秒)
+      max-age: 1800
+    # Session timeout in seconds. 会话超时(秒)
+    timeout: 1800
+#  ssl:
+    # Enable SSL support. 启用SSL支持
+#    enabled: true
+    # SSL protocol to use. 要使用的SSL协议
+#    protocol: TLS
   tomcat:
     # Maximum queue length for incoming connection requests when all possible request processing threads are in use.
+    # 当所有可能的请求处理线程都在使用时，进来的连接请求的最大队列长度
     accept-count: 1
-    # Maximum number of connections that the server will accept and process at any given time.
-    max-connections: 200
-    # Maximum amount of worker threads.
-#    max-threads: 200
-    # Minimum amount of worker threads.
-    min-spare-threads: 20
-    # Character encoding to use to decode the URI.
-#    uri-encoding: UTF-8
     accesslog:
-      # Enable access log.
+      # Buffer output such that it is only flushed periodically.
+      # 缓冲输出，使其仅定期刷新
+#      buffered: true
+      # Directory in which log files are created. Can be relative to the tomcat base dir or absolute.
+      # 在其中创建日志文件的目录，可以是tomcat基本目录的相对目录
+#      directory: logs
+      # Enable access log. 启用访问日志
       enabled: true
+      # Date format to place in log file name. 要放在日志文件名中的日期格式
+      file-date-format: .yyyy-MM-dd.HH
+      # Format pattern for access logs. 访问日志的格式模式
+#      pattern: common
+      # Log file name prefix. 日志文件名前缀
+      prefix: tomcat_access
+      # Defer inclusion of the date stamp in the file name until rotate time.
+      # 将日期时间戳包含在文件名中，直到轮换时间为止
+#      rename-on-rotate: false
+      # Set request attributes for IP address, Hostname, protocol and port used for the request.
+      # 设置用于请求的IP地址，主机名，协议和端口的请求属性
+#      request-attributes-enabled: false
+      # Enable access log rotation. 启用访问日志循环输出
+#      rotate: true
+      # Log file name suffix. 日志文件名后缀
+#      suffix: .log
+    # Delay in seconds between the invocation of backgroundProcess methods.
+    # 调用后台处理方法之间的延迟(秒)
+#    background-processor-delay: 10
+    # Maximum number of connections that the server will accept and process at any given time.
+    # 服务器在任何给定时间接受和处理的最大连接数
+    max-connections: 200
+    # Maximum size in bytes of the HTTP post content.
+    # HTTP发布内容的最大字节大小(2MB)
+#    max-http-post-size: 2097152
+    # Maximum amount of worker threads. 最大工作者线程数
+#    max-threads: 200
+    # Minimum amount of worker threads. 最小工作者线程数
+#    min-spare-threads: 10
+    # Character encoding to use to decode the URI.
+    # 用于解码URI的字符编码
+#    uri-encoding: UTF-8
 
-# SPRING MVC (WebMvcProperties)
-spring:
-  mvc:
-    servlet:
-      # Load on startup priority of the Spring Web Services servlet.
-      load-on-startup: 1
-  # PROFILES
-#  profiles:
-#    active: dev
+# SPRING SESSION (SessionProperties)
 
+
+# ----------------------------------------
+# SECURITY PROPERTIES
+# 安全属性集
+# ----------------------------------------
+
+# SECURITY (SecurityProperties)
+security:
+  basic:
+    # Enable basic authentication. 启用基本的身份验证
+    enabled: true
+    # Comma-separated list of paths to secure. 以逗号分隔的安全路径列表
+    path: /**
+  # Enable Cross Site Request Forgery support. 启用跨站点请求伪造支持
+  enable-csrf: false
+  # Security filter chain order. 安全筛选器链的顺序
+  filter-order: 0
+  # Security filter chain dispatcher types. 安全筛选器链的调度程序类型
+  filter-dispatcher-types: ASYNC, FORWARD, INCLUDE, REQUEST
+  # Comma-separated list of paths to exclude from the default secured paths.
+  ignored:
+
+
+# ----------------------------------------
+# DATA PROPERTIES
+# 数据属性集
+# ----------------------------------------
+
+# DAO (PersistenceExceptionTranslationAutoConfiguration)
+
+# ELASTICSEARCH (ElasticsearchProperties)
+
+# DATASOURCE (DataSourceAutoConfiguration)
 
 # REDIS (RedisProperties)
+
+# TRANSACTION (TransactionProperties)
+
+
+# ----------------------------------------
+# INTEGRATION PROPERTIES
+# 功能集成属性集
+# ----------------------------------------
 
 # ACTIVEMQ (ActiveMQProperties)
 
@@ -70,14 +301,78 @@ spring:
 
 # ----------------------------------------
 # ACTUATOR PROPERTIES
+# 执行器属性集
 # ----------------------------------------
 
 # ENDPOINTS (AbstractEndpoint subclasses)
+endpoints:
+  # Enable endpoints. 启用端点
+  enabled: true
+  actuator:
+    # Enable the endpoint.
+    enabled: true
+    # Endpoint URL path. 端点URL路径
+#    path:
+#  autoconfig:
+#  beans:
+#  configprops:
+#  docs:
+#  dump:
+#  env:
+#  health:
+#  heapdump:
+#  info:
+#  jolokia:
+#  logfile:
+#  loggers:
+#  mappings:
+#  metrics:
+#  shutdown:
+#  trace:
+  # JMX ENDPOINT (EndpointMBeanExportProperties)
+  jmx:
+    # JMX domain name. Initialized with the value of 'spring.jmx.default-domain' if set.
+    domain:
+    # Enable JMX export of all endpoints. 启用所有端点的JMX导出
+    enabled: true
+
+# JOLOKIA (JolokiaProperties)
 
 # MANAGEMENT HTTP SERVER (ManagementServerProperties)
 management:
+  # Management endpoint HTTP port. Uses the same port as the application by default. Configure a different port to use management-specific SSL.
+  # 管理端点的HTTP端口。默认情况下，使用与应用程序相同的端口。
+  port:
   security:
     # Accessing sensitive endpoints
-    # Enable security.
+    # Enable security. 启用安全性
     enabled: false
+  # HEALTH INDICATORS
+  health:
+    # Enable default health indicators. 启用默认的运行状况指示器
+    defaults:
+      enabled: true
+    # Enable disk space health check.
+    diskspace:
+      enabled: true
+  # TRACING (TraceProperties)
+  trace:
+    # Items to be included in the trace. 要包含在追踪中的项目
+    include: request-headers,response-headers,cookies,errors
+
+# METRICS EXPORT (MetricExportProperties)
+
+
+# ----------------------------------------
+# DEVTOOLS PROPERTIES
+# 开发工具箱属性集
+# ----------------------------------------
+
+# DEVTOOLS (DevToolsProperties)
+
+
+# ----------------------------------------
+# TESTING PROPERTIES
+# 测试属性
+# ----------------------------------------
 
